@@ -1,0 +1,36 @@
+---
+
+
+# Adicionando o repositorio do Visual Studio Code
+
+- name: "Importando a chave do repositorio do Visual Studio Code"
+  rpm_key:
+    key: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+  become: true
+  tags:
+    - repo
+    - vscode
+
+- name: "Copiando arquivo de repositório do Visual Studio Code"
+  copy:
+    src: "vscode-rpm.repo"
+    dest: "/etc/yum.repos.d/vscode.repo"
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+  tags:
+    - repo
+    - vscode
+
+
+# Instalando o Visual Studio Code
+
+- name: Instalando o Visual Studio Code
+  dnf:
+    name: code
+    state: present
+  become: true
+  tags:
+    - vscode

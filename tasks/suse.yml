@@ -1,0 +1,50 @@
+---
+
+
+# Adicionando o repositorio do Visual Studio Code
+
+- name: Importando a chave do repositorio do Visual Studio Code
+  rpm_key:
+    key: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  become: true
+  tags:
+    - repo
+    - vscode
+
+- name: Copiando arquivo de repositório do Visual Studio Code
+  copy:
+    src: vscode-opensuse.repo
+    dest: /etc/zypp/repos.d/vscode.repo
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+  tags:
+    - repo
+    - vscode
+
+
+# Atualizando todos os repositorios
+
+- name: Atualizando todos os repositorios
+  zypper_repository:
+    repo: '*'
+    runrefresh: yes
+    auto_import_keys: yes
+  become: true
+  tags:
+    - repo
+    - vscode
+
+
+# Instalando o Visual Studio Code 
+
+- name: Instalando o Visual Studio Code 
+  zypper:
+    name: code
+    state: present
+    force: yes
+  become: true
+  tags:
+    - vscode

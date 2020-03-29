@@ -1,0 +1,10 @@
+---
+
+- name: "Incluindo tarefas especificas para o SO"
+  include_tasks: "{{ item }}"
+  with_first_found:
+   - "{{ ansible_distribution | lower }}.yml"
+   - "{{ ansible_os_family | lower }}.yml"
+   - "os_defaults.yml"
+  tags: 
+   - main
