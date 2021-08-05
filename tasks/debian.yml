@@ -17,12 +17,18 @@
     repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
     state: present
     filename: vscode
-    update_cache: yes
   become: true
   tags:
     - repo
     - vscode
 
+- name: "Atualizando apt cache"
+  apt: 
+    update_cache: yes 
+    cache_valid_time: 7200
+  become: true
+  tags:
+    - repo
 
 # Instalação do Visual Studio Code
 
@@ -30,7 +36,6 @@
   apt:
     name: code
     state: present
-    update_cache: yes
   become: true
   tags:
     - vscode
