@@ -1,4 +1,6 @@
 ---
 
-- name: Distribuição Linux não suportada
+
+- debug: 
+    msg: Distribuição Linux não suportada
   register: os_default

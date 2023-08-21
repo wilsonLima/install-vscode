@@ -6,12 +6,11 @@ Role do Ansible com passos para a instalação do Editor de Texto Visual Studio 
 Distribuições Suportadas pela Role
 ------------
 
-- Fedora 30 ou inferior
-- Linux Mint LMDE 3 ou superior
-- Linux Mint 19.2 ou inferior
-- openSUSE Leap 15.0 ou superior
+- Fedora 37 ou inferior
+- Linux Mint 21.1 ou inferior
+- openSUSE Leap 15.4 ou superior
 - openSUSE Tumbleweed
-- Ubuntu 18.04 ou superior
+- Ubuntu 22.10 ou superior
 
 
 Tags da Role 
